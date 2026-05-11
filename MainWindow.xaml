@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFAssessmentTracker"
         mc:Ignorable="d"
-        Title="MainWindow"  Height="450" Width="800">
+        Title="MainWindow"  Height="450" Width="800"
+        Closing="Window_Closing">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -14,6 +15,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Vertical">
+            <TextBlock x:Name="tbkCurrentFile" Text="Current file: " FontStyle="Italic" Margin="5,0,0,0"/>
             <StackPanel Orientation="Horizontal" Margin="5">
                 <Button Content="Load from file" FontWeight="Bold" Width="100" Height="30" Margin="5,30,0,0" Click="BtnLoadFromFile_Click" />
                 <Button Content="Save to file" FontWeight="Bold" Width="100" Height="30" Margin="5,30,0,0" Click="BtnSaveToFile_Click" />

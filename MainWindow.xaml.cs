@@ -22,6 +22,7 @@ namespace WPFAssessmentTracker
         private string textFile = "assessments.txt";
 
         private List<string[]> assessmentList = new List<string[]>();
+        private List<string[]> lastSavedAssessmentList = new List<string[]>();
         public MainWindow()
         {
             InitializeComponent();
@@ -45,6 +46,7 @@ namespace WPFAssessmentTracker
                         }
                     }
                 }
+                lastSavedAssessmentList = assessmentList.ToList();
             }
             catch (IOException ex)
             {
@@ -69,9 +71,11 @@ namespace WPFAssessmentTracker
                 };
                 lvwAssessments.Items.Add(displayItem);
             }
+
+            tbkCurrentFile.Text = "Current file: " + textFile;
         }
 
-        private void WriteToFile()
+        private bool WriteToFile()
         {
             try
             {
@@ -82,10 +86,13 @@ namespace WPFAssessmentTracker
                         writer.WriteLine($"{exp[0]}|{exp[1]}|{exp[2]}|{exp[3]}|{exp[4]}");
                     }
                 }
+                lastSavedAssessmentList = assessmentList;
+                return true;
             }
             catch (IOException ex)
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return false;
             }
         }
 
@@ -96,8 +103,15 @@ namespace WPFAssessmentTracker
         }
         private void BtnSaveToFile_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("aaaaaaaaaaaaaa", "Input Error",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBoxResult result = MessageBox.Show("Would you like to save your changes?", "Confirm Save", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                if (WriteToFile() == true)
+                {
+                    MessageBox.Show("Changes saved successfully to " + textFile + ".", "Success",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
         }
 
         private void BtnDeleteAssessment_Click(object sender, RoutedEventArgs e)
@@ -105,7 +119,7 @@ namespace WPFAssessmentTracker
             if (sender is Button button && button.Tag is string[] selectedExpense)
             {
                 assessmentList.Remove(selectedExpense);
-                WriteToFile();
+                // WriteToFile();
                 DisplayAssessments();
             }
         }
@@ -132,8 +146,48 @@ namespace WPFAssessmentTracker
                 txtGrade.Text.Trim(),
             };
             assessmentList.Add(row);
-            WriteToFile();
+            //WriteToFile();
             DisplayAssessments();
+        }
+
+        private bool hasUnsavedChanges()
+        {
+            if (lastSavedAssessmentList.Count != assessmentList.Count)
+            {
+                return true;
+            }
+
+            for (int i = 0; i < assessmentList.Count; i++)
+            {
+                if (assessmentList[i] != lastSavedAssessmentList[i])
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!hasUnsavedChanges())
+            {
+                return;
+            }
+            MessageBoxResult result = MessageBox.Show("Would you like to save your changes?", "Confirm Save", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Cancel)
+            {
+                // Stops the window from closing
+                e.Cancel = true;
+            }
+            else if (result == MessageBoxResult.Yes)
+            {
+                if (WriteToFile() == true)
+                {
+                    MessageBox.Show("Changes saved successfully to " + textFile + ".", "Success",
+                        MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
         }
     }
 }
