@@ -1,0 +1,89 @@
+﻿<Window x:Class="WPFAssessmentTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFAssessmentTracker"
+        mc:Ignorable="d"
+        Title="MainWindow"  Height="450" Width="600">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Button Content="Load from file" FontWeight="Bold" Width="100" Height="30" Margin="5,30,0,0" Click="BtnLoadFromFile_Click" />
+                <Button Content="Save to file" FontWeight="Bold" Width="100" Height="30" Margin="5,30,0,0" Click="BtnSaveToFile_Click" />
+                <StackPanel Orientation="Vertical" Width="70" Margin="5,0,0,0">
+                    <Label Content="Filter by" FontWeight="Bold" Height="30" />
+                    <ComboBox SelectedIndex="0" FontWeight="Bold" Height="30" >
+                        <ComboBoxItem Content="Unit" />
+                        <ComboBoxItem Content="Type" />
+                        <ComboBoxItem Content="Name" />
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Width="150" Margin="5,0,0,0">
+                    <Label Content="Search" FontWeight="Bold" Height="30" />
+                    <TextBox x:Name="txtDescr" Height="30" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" Width="100" Margin="5,0,0,0">
+                    <Label Content="Unit name" FontWeight="Bold" Height="30" />
+                    <TextBox x:Name="UnitName" Height="30" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical" Width="120" Margin="5,0,0,0">
+                        <Label Content="Assessment name" FontWeight="Bold" Height="30" />
+                        <TextBox x:Name="AssessmentName" Height="30" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical" Width="100" Margin="5,0,0,0">
+                        <Label Content="Type" FontWeight="Bold" Height="30" />
+                        <TextBox x:Name="Type" Height="30" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical" Width="100" Margin="5,0,0,0">
+                        <Label Content="Due Date" FontWeight="Bold" Height="30" />
+                        <TextBox x:Name="DueDate" Height="30" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical" Width="60" Margin="5,0,0,0">
+                        <Label Content="Grade" FontWeight="Bold" Height="30" />
+                        <TextBox x:Name="Grade" Height="30" />
+                    </StackPanel>
+                </StackPanel>
+                <Button Content="Add new assessment" FontWeight="Bold" Width="100" Height="30" Margin="5,30,0,0" Click="BtnAddAssessment_Click" />
+            </StackPanel>
+        </StackPanel>
+        <ListView x:Name="lvwAssessments" Grid.Row="1" Margin="5" MinHeight="280">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Unit name" Width="100" DisplayMemberBinding="{Binding UnitName}"/>
+                    <GridViewColumn Header="Assessment name" Width="100" DisplayMemberBinding="{Binding AssessmentName}"/>
+                    <GridViewColumn Header="Type" Width="100" DisplayMemberBinding="{Binding Type}"/>
+                    <GridViewColumn Header="Due date" Width="100"  DisplayMemberBinding="{Binding DueDate}"/>
+                    <GridViewColumn Header="Grade" Width="100"  DisplayMemberBinding="{Binding Grade}"/>
+                    <GridViewColumn Header="" Width="40">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="&#x274C;"
+                                        FontWeight="Bold"
+                                        Foreground="Red"
+                                        Padding="4,0"
+                                        Tag="{Binding Data}"
+                                        Click="BtnDeleteExpense_Click"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
