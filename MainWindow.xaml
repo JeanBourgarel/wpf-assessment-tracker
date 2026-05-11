@@ -78,7 +78,7 @@
                                         Foreground="Red"
                                         Padding="4,0"
                                         Tag="{Binding Data}"
-                                        Click="BtnDeleteExpense_Click"/>
+                                        Click="BtnDeleteAssessment_Click"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

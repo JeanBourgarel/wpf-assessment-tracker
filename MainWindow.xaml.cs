@@ -60,7 +60,7 @@ namespace WPFAssessmentTracker
             {
                 var displayItem = new
                 {
-                    //Data = assessment,
+                    Data = assessment,
                     UnitName = assessment[0],
                     AssessmentName = assessment[1],
                     Type = assessment[2],
@@ -100,7 +100,7 @@ namespace WPFAssessmentTracker
                     MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
-        private void BtnDeleteExpense_Click(object sender, RoutedEventArgs e)
+        private void BtnDeleteAssessment_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button && button.Tag is string[] selectedExpense)
             {
