@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using Microsoft.VisualBasic;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Windows;
@@ -78,7 +79,7 @@ namespace WPFAssessmentTracker
                 {
                     foreach (var exp in assessmentList)
                     {
-                        writer.WriteLine($"{exp[0]}|{exp[1]}|{exp[2]}");
+                        writer.WriteLine($"{exp[0]}|{exp[1]}|{exp[2]}|{exp[3]}|{exp[4]}");
                     }
                 }
             }
@@ -111,8 +112,28 @@ namespace WPFAssessmentTracker
 
         private void BtnAddAssessment_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("add assessment", "Input Error",
-                   MessageBoxButton.OK, MessageBoxImage.Warning);
+            if (string.IsNullOrWhiteSpace(txtUnitName.Text)
+                 || string.IsNullOrWhiteSpace(txtAssessmentName.Text)
+                 || string.IsNullOrWhiteSpace(txtType.Text)
+                 || dpkDueDate.SelectedDate == null
+                 || string.IsNullOrWhiteSpace(txtGrade.Text))
+            {
+                MessageBox.Show("Please fill in Unit name, Assessment name, Type, Due date and Grade.", "Input Error",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            string[] row = new string[]
+            {
+                txtUnitName.Text.Trim(),
+                txtAssessmentName.Text.Trim(),
+                txtType.Text.Trim(),
+                dpkDueDate.SelectedDate.Value.ToString("yyyy-MM-dd"),
+                txtGrade.Text.Trim(),
+            };
+            assessmentList.Add(row);
+            WriteToFile();
+            DisplayAssessments();
         }
     }
 }

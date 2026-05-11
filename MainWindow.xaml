@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFAssessmentTracker"
         mc:Ignorable="d"
-        Title="MainWindow"  Height="450" Width="600">
+        Title="MainWindow"  Height="450" Width="800">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -27,39 +27,39 @@
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Width="150" Margin="5,0,0,0">
                     <Label Content="Search" FontWeight="Bold" Height="30" />
-                    <TextBox x:Name="txtDescr" Height="30" />
+                    <TextBox x:Name="txtSearch" Height="30" />
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <StackPanel Orientation="Vertical" Width="100" Margin="5,0,0,0">
                     <Label Content="Unit name" FontWeight="Bold" Height="30" />
-                    <TextBox x:Name="UnitName" Height="30" />
+                    <TextBox x:Name="txtUnitName" Height="30" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Vertical" Width="120" Margin="5,0,0,0">
                         <Label Content="Assessment name" FontWeight="Bold" Height="30" />
-                        <TextBox x:Name="AssessmentName" Height="30" />
+                        <TextBox x:Name="txtAssessmentName" Height="30" />
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Vertical" Width="100" Margin="5,0,0,0">
                         <Label Content="Type" FontWeight="Bold" Height="30" />
-                        <TextBox x:Name="Type" Height="30" />
+                        <TextBox x:Name="txtType" Height="30" />
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Vertical" Width="100" Margin="5,0,0,0">
                         <Label Content="Due Date" FontWeight="Bold" Height="30" />
-                        <TextBox x:Name="DueDate" Height="30" />
+                        <DatePicker x:Name="dpkDueDate" Height="30" />
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Vertical" Width="60" Margin="5,0,0,0">
                         <Label Content="Grade" FontWeight="Bold" Height="30" />
-                        <TextBox x:Name="Grade" Height="30" />
+                        <TextBox x:Name="txtGrade" Height="30" />
                     </StackPanel>
                 </StackPanel>
-                <Button Content="Add new assessment" FontWeight="Bold" Width="100" Height="30" Margin="5,30,0,0" Click="BtnAddAssessment_Click" />
+                <Button Content="Add new assessment" FontWeight="Bold" Width="130" Height="30" Margin="5,30,0,0" Click="BtnAddAssessment_Click" />
             </StackPanel>
         </StackPanel>
         <ListView x:Name="lvwAssessments" Grid.Row="1" Margin="5" MinHeight="280">
