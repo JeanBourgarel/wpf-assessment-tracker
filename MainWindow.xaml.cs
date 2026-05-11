@@ -36,6 +36,7 @@ namespace WPFAssessmentTracker
             {
                 using (StreamReader reader = new StreamReader(textFile))
                 {
+                    assessmentList.Clear();
                     string? line;
                     while ((line = reader.ReadLine()) != null)
                     {
@@ -98,8 +99,42 @@ namespace WPFAssessmentTracker
 
         private void BtnLoadFromFile_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("aaaaaaaaaaaaaa", "Input Error",
-                    MessageBoxButton.OK, MessageBoxImage.Warning);
+            // Configure open file dialog box
+            var dialog = new Microsoft.Win32.OpenFileDialog();
+            dialog.FileName = "Document"; // Default file name
+            dialog.DefaultExt = ".txt"; // Default file extension
+            dialog.Filter = "Text documents (.txt)|*.txt"; // Filter files by extension
+
+            // Show open file dialog box
+            bool? result = dialog.ShowDialog();
+
+            // Process open file dialog box results
+            if (result == true)
+            {
+                if (hasUnsavedChanges())
+                {
+                    MessageBoxResult saveResult = MessageBox.Show("Would you like to save your changes before loading another file ?",
+                        "Confirm Save",
+                        MessageBoxButton.YesNoCancel,
+                        MessageBoxImage.Question);
+
+                    if (saveResult == MessageBoxResult.Yes)
+                    {
+                        if (WriteToFile() == true)
+                        {
+                            MessageBox.Show("Changes saved successfully to " + textFile + ".", "Success",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                    }
+                    else if (saveResult == MessageBoxResult.Cancel) {
+                        return;
+                    }
+                }
+                string fileName = dialog.FileName;
+                textFile = System.IO.Path.GetFileName(fileName);
+                ReadFromFile();
+                DisplayAssessments();
+            }
         }
         private void BtnSaveToFile_Click(object sender, RoutedEventArgs e)
         {
@@ -173,7 +208,7 @@ namespace WPFAssessmentTracker
             {
                 return;
             }
-            MessageBoxResult result = MessageBox.Show("Would you like to save your changes?", "Confirm Save", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Would you like to save your changes before quitting?", "Confirm Save", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Cancel)
             {
