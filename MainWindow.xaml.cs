@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualBasic;
 using System.Globalization;
 using System.IO;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -171,18 +172,74 @@ namespace WPFAssessmentTracker
                 DisplayAssessments();
             }
         }
-        private void BtnSaveToFile_Click(object sender, RoutedEventArgs e)
+
+        private String getNextAvailableFileName()
         {
-            MessageBoxResult result = MessageBox.Show("Would you like to save your changes?", "Confirm Save", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (result == MessageBoxResult.Yes)
+            string fileNameIncremented = textFile;
+
+            if (File.Exists(fileNameIncremented))
             {
-                if (WriteToFile() == true)
+                string[] split = fileNameIncremented.Split('(', ')');
+                if (split.Length == 1)
                 {
-                    MessageBox.Show("Changes saved successfully to " + textFile + ".", "Success",
-                        MessageBoxButton.OK, MessageBoxImage.Information);
+                    fileNameIncremented = System.IO.Path.GetFileNameWithoutExtension(textFile) + "(1).txt";
+
+                } else
+                {
+                    int newNb = int.Parse(split[1]) + 1;
+                    fileNameIncremented= split[0] + "(" + newNb + ").txt";
                 }
             }
-       }
+            return fileNameIncremented;
+        }
+        private void BtnSaveToFile_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Owner = this;
+
+            if (dialog.ShowDialog() == true)
+            {
+                switch (dialog.Result)
+                {
+                    case SaveFileDialog.SaveResult.CurrentFile:
+                        if (WriteToFile() == true)
+                        {
+                            MessageBox.Show("Changes saved successfully to " + textFile + ".", "Success",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        break;
+                    case SaveFileDialog.SaveResult.NewFile:
+                        textFile = getNextAvailableFileName();
+                        if (WriteToFile() == true)
+                        {
+                            MessageBox.Show("Changes saved successfully to " + textFile + ".", "Success",
+                                MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        break;
+                }
+            }
+            DisplayAssessments();
+
+            // To use for AT2.4
+
+            //var dialog = new Microsoft.Win32.SaveFileDialog();
+            //dialog.FileName = textFile; // Default file name
+            //dialog.DefaultExt = ".txt"; // Default file extension
+            //dialog.Filter = "Text documents (.txt)|*.txt";
+
+            //bool? result = dialog.ShowDialog();
+
+
+            //if (result == true)
+            //{
+            //    textFile = System.IO.Path.GetFileName(dialog.FileName);
+            //    if (WriteToFile() == true)
+            //    {
+            //        MessageBox.Show("Changes saved successfully to " + textFile + ".", "Success",
+            //            MessageBoxButton.OK, MessageBoxImage.Information);
+            //    }
+            //}
+        }
 
         private void BtnSaveAs_Click(object sender, RoutedEventArgs e)
         {

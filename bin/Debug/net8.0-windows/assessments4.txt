@@ -1,0 +1,5 @@
+C#|AT1|Portfolio|9/08/2025|S
+Java|AT3|RoW|20/05/2026|NYM
+Java|AT2|KBA|12/05/2026|NYS
+q|q|q|18/05/2026|S
+q|q|q|18/05/2026|S
