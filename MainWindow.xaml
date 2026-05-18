@@ -21,7 +21,7 @@
                 <Button Content="Save to file" FontWeight="Bold" Width="100" Height="30" Margin="5,30,0,0" Click="BtnSaveToFile_Click" />
                 <StackPanel Orientation="Vertical" Width="70" Margin="5,0,0,0">
                     <Label Content="Filter by" FontWeight="Bold" Height="30" />
-                    <ComboBox SelectedIndex="0" FontWeight="Bold" Height="30" >
+                    <ComboBox x:Name="comboBxFilter" SelectedIndex="0" FontWeight="Bold" Height="30" >
                         <ComboBoxItem Content="Unit" />
                         <ComboBoxItem Content="Type" />
                         <ComboBoxItem Content="Name" />
@@ -29,7 +29,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Width="150" Margin="5,0,0,0">
                     <Label Content="Search" FontWeight="Bold" Height="30" />
-                    <TextBox x:Name="txtSearch" Height="30" />
+                    <TextBox x:Name="txtSearch" Height="30" TextChanged="txtSearchChangedEventHandler" />
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal">

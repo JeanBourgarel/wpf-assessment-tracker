@@ -55,6 +55,11 @@ namespace WPFAssessmentTracker
             }
         }
 
+        private void DisplayAssessmentPerColumn()
+        {
+
+        }
+
         private void DisplayAssessments()
         {
             lvwAssessments.Items.Clear();
@@ -71,14 +76,29 @@ namespace WPFAssessmentTracker
                     DueDate = assessment[3],
                     Grade = assessment[4],
                 };
-                if (displayItem.Grade == "S")
+
+                ListView selectedList = displayItem.Grade == "S" ? lvwAssessmentsCompleted : lvwAssessments;
+                string searchBoxText = txtSearch.Text;
+                string filterBy = comboBxFilter.Text;
+
+                if (searchBoxText != "")
                 {
-                    lvwAssessmentsCompleted.Items.Add(displayItem);
-                }
-                else
+                    if (filterBy == "Unit" && displayItem.UnitName.Contains(searchBoxText, StringComparison.OrdinalIgnoreCase))
+                    {
+                        selectedList.Items.Add(displayItem);
+                    } else if (filterBy == "Type" && displayItem.Type.Contains(searchBoxText, StringComparison.OrdinalIgnoreCase))
+                    {
+                        selectedList.Items.Add(displayItem);
+                    }
+                    else if (filterBy == "Name" && displayItem.AssessmentName.Contains(searchBoxText, StringComparison.OrdinalIgnoreCase))
+                    {
+                        selectedList.Items.Add(displayItem);
+                    }
+                } else
                 {
-                    lvwAssessments.Items.Add(displayItem);
+                    selectedList.Items.Add(displayItem);
                 }
+
             }
 
             tbkCurrentFile.Text = "Current file: " + textFile;
@@ -103,6 +123,12 @@ namespace WPFAssessmentTracker
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;
             }
+        }
+
+        private void txtSearchChangedEventHandler(object sender, TextChangedEventArgs e)
+        {
+            string currentText = txtSearch.Text;
+            DisplayAssessments();
         }
 
         private void BtnLoadFromFile_Click(object sender, RoutedEventArgs e)
@@ -134,7 +160,8 @@ namespace WPFAssessmentTracker
                                 MessageBoxButton.OK, MessageBoxImage.Information);
                         }
                     }
-                    else if (saveResult == MessageBoxResult.Cancel) {
+                    else if (saveResult == MessageBoxResult.Cancel)
+                    {
                         return;
                     }
                 }
