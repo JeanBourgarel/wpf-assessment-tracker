@@ -58,7 +58,11 @@
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Vertical" Width="60" Margin="5,0,0,0">
                         <Label Content="Grade" FontWeight="Bold" Height="30" />
-                        <TextBox x:Name="txtGrade" Height="30" />
+                        <ComboBox x:Name="comboBxGrade" SelectedIndex="0" FontWeight="Bold" Height="30" >
+                            <ComboBoxItem Content="S" />
+                            <ComboBoxItem Content="NYS" />
+                            <ComboBoxItem Content="NYM" />
+                        </ComboBox>
                     </StackPanel>
                 </StackPanel>
                 <Button Content="Add new assessment" FontWeight="Bold" Width="130" Height="30" Margin="5,30,0,0" Click="BtnAddAssessment_Click" />
@@ -91,6 +95,17 @@
                         <GridViewColumn Header="Grade" Width="100"
                                 DisplayMemberBinding="{Binding Grade}"/>
 
+                        <GridViewColumn Header="" Width="40">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="&#x270F;"
+                                            FontWeight="Bold"
+                                            Padding="4,0"
+                                            Tag="{Binding Data}"
+                                            Click="BtnEditAssessment_Click"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                         <GridViewColumn Header="" Width="40">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
@@ -128,6 +143,16 @@
                         <GridViewColumn Header="Grade" Width="100"
                                 DisplayMemberBinding="{Binding Grade}"/>
 
+                        <GridViewColumn Header="" Width="40">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="&#x270F;"
+                                            Padding="4,0"
+                                            Tag="{Binding Data}"
+                                            Click="BtnEditAssessment_Click"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                         <GridViewColumn Header="" Width="40">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>

@@ -184,11 +184,21 @@ namespace WPFAssessmentTracker
             }
         }
 
+        private void BtnEditAssessment_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is string[] selectedAssessment)
+            {
+                //assessmentList.Remove(selectedAssessment);
+                // WriteToFile();
+               // DisplayAssessments();
+            }
+        }
+
         private void BtnDeleteAssessment_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button && button.Tag is string[] selectedExpense)
+            if (sender is Button button && button.Tag is string[] selectedAssessment)
             {
-                assessmentList.Remove(selectedExpense);
+                assessmentList.Remove(selectedAssessment);
                 // WriteToFile();
                 DisplayAssessments();
             }
@@ -200,7 +210,7 @@ namespace WPFAssessmentTracker
                  || string.IsNullOrWhiteSpace(txtAssessmentName.Text)
                  || string.IsNullOrWhiteSpace(txtType.Text)
                  || dpkDueDate.SelectedDate == null
-                 || string.IsNullOrWhiteSpace(txtGrade.Text))
+                 || string.IsNullOrWhiteSpace(comboBxGrade.Text))
             {
                 MessageBox.Show("Please fill in Unit name, Assessment name, Type, Due date and Grade.", "Input Error",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -213,7 +223,7 @@ namespace WPFAssessmentTracker
                 txtAssessmentName.Text.Trim(),
                 txtType.Text.Trim(),
                 dpkDueDate.SelectedDate.Value.ToString("yyyy-MM-dd"),
-                txtGrade.Text.Trim(),
+                comboBxGrade.Text.Trim(),
             };
             assessmentList.Add(row);
             //WriteToFile();
