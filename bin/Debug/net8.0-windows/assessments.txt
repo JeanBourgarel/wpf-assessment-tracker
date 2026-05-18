@@ -1,8 +1,4 @@
-C#|AT1|Portfolio|2025-08-09|S
-Java|AT2|KBA|2026-05-11|NYS
-Java|AT3|RoW|2026-05-20|NYM
-test|test|aaa|2026-05-13|S
-ghffdg|rg|gfrfeef|2026-05-14|1
-hgfgfh|ghfhgf|hgghfhgfgh|2026-05-14|ghfhgf
-hgfgfh|ghfhgf|hgghfhgfgh|2026-05-14|ghfhgf
-aaaa|aaa|wwww|14/05/2026|NYS
+C#|AT1|Portfolio|9/08/2025|S
+test|test|aaa|13/05/2026|S
+Java|AT3|RoW|20/05/2026|NYM
+Java|AT2|KBA|12/05/2026|NYS

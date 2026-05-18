@@ -28,6 +28,7 @@ namespace WPFAssessmentTracker
             InitializeComponent();
             ReadFromFile();
             DisplayAssessments();
+            dpkDueDate.SelectedDate = DateTime.Today;
         }
 
         private void ReadFromFile()
@@ -135,16 +136,13 @@ namespace WPFAssessmentTracker
 
         private void BtnLoadFromFile_Click(object sender, RoutedEventArgs e)
         {
-            // Configure open file dialog box
             var dialog = new Microsoft.Win32.OpenFileDialog();
-            dialog.FileName = "Document"; // Default file name
-            dialog.DefaultExt = ".txt"; // Default file extension
-            dialog.Filter = "Text documents (.txt)|*.txt"; // Filter files by extension
+            dialog.FileName = "Document";
+            dialog.DefaultExt = ".txt";
+            dialog.Filter = "Text documents (.txt)|*.txt";
 
-            // Show open file dialog box
             bool? result = dialog.ShowDialog();
 
-            // Process open file dialog box results
             if (result == true)
             {
                 if (hasUnsavedChanges())
@@ -184,6 +182,15 @@ namespace WPFAssessmentTracker
                         MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
+       }
+
+        private void BtnSaveAs_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new Microsoft.Win32.SaveFileDialog();
+            dialog.FileName = textFile; // Default file name
+                                        //dialog.DefaultExt = ".txt"; // Default file extension
+
+            bool? test = dialog.ShowDialog();
         }
 
         private void BtnEditAssessment_Click(object sender, RoutedEventArgs e)
@@ -194,10 +201,9 @@ namespace WPFAssessmentTracker
                 if (editWindow.ShowDialog() == true)
                 {
                     Console.WriteLine(selectedAssessment);
-                    assessmentList.Remove(selectedAssessment);
-                    assessmentList.Add(editWindow.savedAssessment);
+                    int index = assessmentList.IndexOf(selectedAssessment);
+                    assessmentList[index] = editWindow.savedAssessment;
                 }
-                // WriteToFile();
                 DisplayAssessments();
             }
         }
@@ -230,7 +236,7 @@ namespace WPFAssessmentTracker
                 txtUnitName.Text.Trim(),
                 txtAssessmentName.Text.Trim(),
                 txtType.Text.Trim(),
-                dpkDueDate.SelectedDate.Value.ToString("yyyy-MM-dd"),
+                dpkDueDate.Text.Trim(),
                 comboBxGrade.Text.Trim(),
             };
             assessmentList.Add(row);

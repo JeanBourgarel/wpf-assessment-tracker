@@ -52,7 +52,7 @@
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Vertical" Width="105" Margin="5,0,0,0">
                         <Label Content="Due Date" FontWeight="Bold" Height="30" />
-                        <DatePicker x:Name="dpkDueDate" Height="30" />
+                        <DatePicker x:Name="dpkDueDate" Height="30"/>
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
@@ -74,7 +74,6 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!-- Left ListView -->
             <ListView x:Name="lvwAssessments" Grid.Column="0" Margin="5" MinHeight="280"
                       ScrollViewer.VerticalScrollBarVisibility="Auto"
           ScrollViewer.HorizontalScrollBarVisibility="Auto">
@@ -122,10 +121,9 @@
                 </ListView.View>
             </ListView>
 
-            <!-- Right ListView -->
             <ListView x:Name="lvwAssessmentsCompleted" Grid.Column="1" Margin="5" MinHeight="280" 
                       ScrollViewer.VerticalScrollBarVisibility="Auto"
-          ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Unit name" Width="100"
@@ -147,6 +145,7 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Content="&#x270F;"
+                                            FontWeight="Bold"
                                             Padding="4,0"
                                             Tag="{Binding Data}"
                                             Click="BtnEditAssessment_Click"/>
