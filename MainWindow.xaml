@@ -50,7 +50,7 @@
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Vertical" Width="100" Margin="5,0,0,0">
+                    <StackPanel Orientation="Vertical" Width="105" Margin="5,0,0,0">
                         <Label Content="Due Date" FontWeight="Bold" Height="30" />
                         <DatePicker x:Name="dpkDueDate" Height="30" />
                     </StackPanel>

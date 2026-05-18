@@ -1,0 +1,46 @@
+﻿<Window x:Class="WPFAssessmentTracker.EditAssessmentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFAssessmentTracker"
+        mc:Ignorable="d"
+        Title="Edit assessment window" Height="450" MinWidth="100" SizeToContent="WidthAndHeight">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Vertical">
+            <Label FontWeight="Bold" Content="Unit name"/>
+            <TextBox Name="txtUnitName" MinWidth="250">aaaa</TextBox>
+
+            <Label FontWeight="Bold" Content="Assessment name"/>
+            <TextBox Name="txtAssessmentName" MinWidth="250">eeee</TextBox>
+
+            <Label FontWeight="Bold" Content="Type"/>
+            <TextBox Name="txtType" MinWidth="250">oooo</TextBox>
+
+            <Label Content="Due Date" FontWeight="Bold" Height="30" />
+            <DatePicker x:Name="dpkDueDate" Height="30" />
+
+            <Label Content="Grade" FontWeight="Bold" Height="30" />
+            <ComboBox x:Name="comboBxGrade" SelectedIndex="0" FontWeight="Bold" Height="30" >
+                <ComboBoxItem Content="S" />
+                <ComboBoxItem Content="NYS" />
+                <ComboBoxItem Content="NYM" />
+            </ComboBox>
+
+            <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,15,0,0">
+                <Button IsDefault="True" Name="btnDialogOk" Click="btnDialogOk_Click" MinWidth="60" Margin="0,0,10,0">_Save</Button>
+                <Button IsCancel="True" MinWidth="60">_Cancel</Button>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Window>

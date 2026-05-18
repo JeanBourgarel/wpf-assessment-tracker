@@ -188,9 +188,11 @@ namespace WPFAssessmentTracker
         {
             if (sender is Button button && button.Tag is string[] selectedAssessment)
             {
+                EditAssessmentWindow editWindow = new EditAssessmentWindow("tem le prout?", "jean");
+                editWindow.ShowDialog();
                 //assessmentList.Remove(selectedAssessment);
                 // WriteToFile();
-               // DisplayAssessments();
+                // DisplayAssessments();
             }
         }
 
