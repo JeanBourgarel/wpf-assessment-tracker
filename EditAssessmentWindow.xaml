@@ -31,15 +31,15 @@
             <DatePicker x:Name="dpkDueDate" Height="30" />
 
             <Label Content="Grade" FontWeight="Bold" Height="30" />
-            <ComboBox x:Name="comboBxGrade" SelectedIndex="0" FontWeight="Bold" Height="30" >
-                <ComboBoxItem Content="S" />
+            <ComboBox x:Name="comboBxGrade" SelectedValuePath="Content" FontWeight="Bold" Height="30" >
+                <ComboBoxItem Content="S"/>
                 <ComboBoxItem Content="NYS" />
                 <ComboBoxItem Content="NYM" />
             </ComboBox>
 
             <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,15,0,0">
-                <Button IsDefault="True" Name="btnDialogOk" Click="btnDialogOk_Click" MinWidth="60" Margin="0,0,10,0">_Save</Button>
-                <Button IsCancel="True" MinWidth="60">_Cancel</Button>
+                <Button IsDefault="True" Name="btnDialogOk" Click="btnDialogOk_Click" MinWidth="60" Margin="0,0,10,0">Save</Button>
+                <Button IsCancel="True" MinWidth="60">Cancel</Button>
             </WrapPanel>
         </StackPanel>
     </Grid>

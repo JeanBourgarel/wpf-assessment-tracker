@@ -86,7 +86,8 @@ namespace WPFAssessmentTracker
                     if (filterBy == "Unit" && displayItem.UnitName.Contains(searchBoxText, StringComparison.OrdinalIgnoreCase))
                     {
                         selectedList.Items.Add(displayItem);
-                    } else if (filterBy == "Type" && displayItem.Type.Contains(searchBoxText, StringComparison.OrdinalIgnoreCase))
+                    }
+                    else if (filterBy == "Type" && displayItem.Type.Contains(searchBoxText, StringComparison.OrdinalIgnoreCase))
                     {
                         selectedList.Items.Add(displayItem);
                     }
@@ -94,7 +95,8 @@ namespace WPFAssessmentTracker
                     {
                         selectedList.Items.Add(displayItem);
                     }
-                } else
+                }
+                else
                 {
                     selectedList.Items.Add(displayItem);
                 }
@@ -188,11 +190,15 @@ namespace WPFAssessmentTracker
         {
             if (sender is Button button && button.Tag is string[] selectedAssessment)
             {
-                EditAssessmentWindow editWindow = new EditAssessmentWindow("tem le prout?", "jean");
-                editWindow.ShowDialog();
-                //assessmentList.Remove(selectedAssessment);
+                EditAssessmentWindow editWindow = new EditAssessmentWindow(selectedAssessment);
+                if (editWindow.ShowDialog() == true)
+                {
+                    Console.WriteLine(selectedAssessment);
+                    assessmentList.Remove(selectedAssessment);
+                    assessmentList.Add(editWindow.savedAssessment);
+                }
                 // WriteToFile();
-                // DisplayAssessments();
+                DisplayAssessments();
             }
         }
 
