@@ -58,6 +58,7 @@ namespace WPFAssessmentTracker
         private void DisplayAssessments()
         {
             lvwAssessments.Items.Clear();
+            lvwAssessmentsCompleted.Items.Clear();
 
             foreach (var assessment in assessmentList)
             {
@@ -70,7 +71,14 @@ namespace WPFAssessmentTracker
                     DueDate = assessment[3],
                     Grade = assessment[4],
                 };
-                lvwAssessments.Items.Add(displayItem);
+                if (displayItem.Grade == "S")
+                {
+                    lvwAssessmentsCompleted.Items.Add(displayItem);
+                }
+                else
+                {
+                    lvwAssessments.Items.Add(displayItem);
+                }
             }
 
             tbkCurrentFile.Text = "Current file: " + textFile;

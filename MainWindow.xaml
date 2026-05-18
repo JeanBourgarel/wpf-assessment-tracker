@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFAssessmentTracker"
         mc:Ignorable="d"
-        Title="MainWindow"  Height="450" SizeToContent="Width" MinWidth="50"
+        Title="MainWindow"  Height="450" SizeToContent="WidthAndHeight" MinWidth="50"
         Closing="Window_Closing">
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -71,11 +71,9 @@
             </Grid.ColumnDefinitions>
 
             <!-- Left ListView -->
-            <ListView x:Name="lvwAssessments"
-              Grid.Column="0"
-              Margin="5"
-              MinHeight="280">
-
+            <ListView x:Name="lvwAssessments" Grid.Column="0" Margin="5" MinHeight="280"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+          ScrollViewer.HorizontalScrollBarVisibility="Auto">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Unit name" Width="100"
@@ -110,11 +108,9 @@
             </ListView>
 
             <!-- Right ListView -->
-            <ListView x:Name="lvwAssessments2"
-              Grid.Column="1"
-              Margin="5"
-              MinHeight="280">
-
+            <ListView x:Name="lvwAssessmentsCompleted" Grid.Column="1" Margin="5" MinHeight="280" 
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+          ScrollViewer.HorizontalScrollBarVisibility="Auto">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Unit name" Width="100"
