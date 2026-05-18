@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFAssessmentTracker"
         mc:Ignorable="d"
-        Title="MainWindow"  Height="450" Width="800"
+        Title="MainWindow"  Height="450" SizeToContent="Width" MinWidth="50"
         Closing="Window_Closing">
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -64,28 +64,89 @@
                 <Button Content="Add new assessment" FontWeight="Bold" Width="130" Height="30" Margin="5,30,0,0" Click="BtnAddAssessment_Click" />
             </StackPanel>
         </StackPanel>
-        <ListView x:Name="lvwAssessments" Grid.Row="1" Margin="5" MinHeight="280">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Unit name" Width="100" DisplayMemberBinding="{Binding UnitName}"/>
-                    <GridViewColumn Header="Assessment name" Width="100" DisplayMemberBinding="{Binding AssessmentName}"/>
-                    <GridViewColumn Header="Type" Width="100" DisplayMemberBinding="{Binding Type}"/>
-                    <GridViewColumn Header="Due date" Width="100"  DisplayMemberBinding="{Binding DueDate}"/>
-                    <GridViewColumn Header="Grade" Width="100"  DisplayMemberBinding="{Binding Grade}"/>
-                    <GridViewColumn Header="" Width="40">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="&#x274C;"
-                                        FontWeight="Bold"
-                                        Foreground="Red"
-                                        Padding="4,0"
-                                        Tag="{Binding Data}"
-                                        Click="BtnDeleteAssessment_Click"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Grid Grid.Row="1" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Left ListView -->
+            <ListView x:Name="lvwAssessments"
+              Grid.Column="0"
+              Margin="5"
+              MinHeight="280">
+
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Unit name" Width="100"
+                                DisplayMemberBinding="{Binding UnitName}"/>
+
+                        <GridViewColumn Header="Assessment name" Width="100"
+                                DisplayMemberBinding="{Binding AssessmentName}"/>
+
+                        <GridViewColumn Header="Type" Width="100"
+                                DisplayMemberBinding="{Binding Type}"/>
+
+                        <GridViewColumn Header="Due date" Width="100"
+                                DisplayMemberBinding="{Binding DueDate}"/>
+
+                        <GridViewColumn Header="Grade" Width="100"
+                                DisplayMemberBinding="{Binding Grade}"/>
+
+                        <GridViewColumn Header="" Width="40">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="&#x274C;"
+                                    FontWeight="Bold"
+                                    Foreground="Red"
+                                    Padding="4,0"
+                                    Tag="{Binding Data}"
+                                    Click="BtnDeleteAssessment_Click"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <!-- Right ListView -->
+            <ListView x:Name="lvwAssessments2"
+              Grid.Column="1"
+              Margin="5"
+              MinHeight="280">
+
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Unit name" Width="100"
+                                DisplayMemberBinding="{Binding UnitName}"/>
+
+                        <GridViewColumn Header="Assessment name" Width="100"
+                                DisplayMemberBinding="{Binding AssessmentName}"/>
+
+                        <GridViewColumn Header="Type" Width="100"
+                                DisplayMemberBinding="{Binding Type}"/>
+
+                        <GridViewColumn Header="Due date" Width="100"
+                                DisplayMemberBinding="{Binding DueDate}"/>
+
+                        <GridViewColumn Header="Grade" Width="100"
+                                DisplayMemberBinding="{Binding Grade}"/>
+
+                        <GridViewColumn Header="" Width="40">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="&#x274C;"
+                                    FontWeight="Bold"
+                                    Foreground="Red"
+                                    Padding="4,0"
+                                    Tag="{Binding Data}"
+                                    Click="BtnDeleteAssessment_Click"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
     </Grid>
 </Window>
