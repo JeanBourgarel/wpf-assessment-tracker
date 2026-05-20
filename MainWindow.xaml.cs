@@ -1,23 +1,9 @@
-﻿using Microsoft.VisualBasic;
-using System.Globalization;
-using System.IO;
-using System.Reflection.PortableExecutable;
-using System.Text;
+﻿using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WPFAssessmentTracker
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private string textFile = "assessments.txt";
@@ -244,8 +230,7 @@ namespace WPFAssessmentTracker
         private void BtnSaveAs_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new Microsoft.Win32.SaveFileDialog();
-            dialog.FileName = textFile; // Default file name
-                                        //dialog.DefaultExt = ".txt"; // Default file extension
+            dialog.FileName = textFile;
 
             bool? test = dialog.ShowDialog();
         }
@@ -328,7 +313,6 @@ namespace WPFAssessmentTracker
 
             if (result == MessageBoxResult.Cancel)
             {
-                // Stops the window from closing
                 e.Cancel = true;
             }
             else if (result == MessageBoxResult.Yes)
