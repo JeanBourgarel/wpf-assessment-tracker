@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WPFAssessmentTracker")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5b16bae78a5b98fa2a0ce69eec1e5edb110cb868")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0bfc05fc9d01acebb278f49f69387dd983107e46")]
 [assembly: System.Reflection.AssemblyProductAttribute("WPFAssessmentTracker")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WPFAssessmentTracker")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

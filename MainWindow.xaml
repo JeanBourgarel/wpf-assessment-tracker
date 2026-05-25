@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFAssessmentTracker"
         mc:Ignorable="d"
-        Title="MainWindow"  Height="450" SizeToContent="WidthAndHeight" MinWidth="50"
+        Title="WPF Assessment Tracker"  Height="450" SizeToContent="WidthAndHeight" MinWidth="50"
         Closing="Window_Closing">
     <Grid Margin="10">
         <Grid.RowDefinitions>

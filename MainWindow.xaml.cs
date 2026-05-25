@@ -43,11 +43,6 @@ namespace WPFAssessmentTracker
             }
         }
 
-        private void DisplayAssessmentPerColumn()
-        {
-
-        }
-
         private void DisplayAssessments()
         {
             lvwAssessments.Items.Clear();
@@ -165,15 +160,15 @@ namespace WPFAssessmentTracker
 
             if (File.Exists(fileNameIncremented))
             {
-                string[] split = fileNameIncremented.Split('(', ')');
+                string[] split = fileNameIncremented.Split('_', '_');
                 if (split.Length == 1)
                 {
-                    fileNameIncremented = System.IO.Path.GetFileNameWithoutExtension(textFile) + "(1).txt";
+                    fileNameIncremented = System.IO.Path.GetFileNameWithoutExtension(textFile) + "_1_.txt";
 
                 } else
                 {
                     int newNb = int.Parse(split[1]) + 1;
-                    fileNameIncremented= split[0] + "(" + newNb + ").txt";
+                    fileNameIncremented= split[0] + "_" + newNb + "_.txt";
                 }
             }
             return fileNameIncremented;
