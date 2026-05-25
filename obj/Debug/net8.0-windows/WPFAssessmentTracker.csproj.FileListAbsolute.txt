@@ -18,3 +18,8 @@ C:\Users\30138420\Documents\Assessments\Cluster - C# One\AT2.3\WPFAssessmentTrac
 C:\Users\30138420\Documents\Assessments\Cluster - C# One\AT2.3\WPFAssessmentTracker\obj\Debug\net8.0-windows\WPFAssessmentTracker.pdb
 C:\Users\30138420\Documents\Assessments\Cluster - C# One\AT2.3\WPFAssessmentTracker\obj\Debug\net8.0-windows\WPFAssessmentTracker.genruntimeconfig.cache
 C:\Users\30138420\Documents\Assessments\Cluster - C# One\AT2.3\WPFAssessmentTracker\obj\Debug\net8.0-windows\ref\WPFAssessmentTracker.dll
+C:\Users\30138420\Documents\Assessments\Cluster - C# One\AT2.3\WPFAssessmentTracker\obj\Debug\net8.0-windows\WPFAssessmentTracker.sourcelink.json
+C:\Users\30138420\Documents\Assessments\Cluster - C# One\AT2.3\WPFAssessmentTracker\obj\Debug\net8.0-windows\EditAssessmentWindow.g.cs
+C:\Users\30138420\Documents\Assessments\Cluster - C# One\AT2.3\WPFAssessmentTracker\obj\Debug\net8.0-windows\EditAssessmentWindow.baml
+C:\Users\30138420\Documents\Assessments\Cluster - C# One\AT2.3\WPFAssessmentTracker\obj\Debug\net8.0-windows\SaveFileDialog.g.cs
+C:\Users\30138420\Documents\Assessments\Cluster - C# One\AT2.3\WPFAssessmentTracker\obj\Debug\net8.0-windows\SaveFileDialog.baml

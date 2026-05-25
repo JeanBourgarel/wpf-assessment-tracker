@@ -1,0 +1,23 @@
+﻿<Window x:Class="WPFAssessmentTracker.SaveFileDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFAssessmentTracker"
+        mc:Ignorable="d"
+        Title="Save file" Height="160" SizeToContent="WidthAndHeight" MinWidth="50">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="What would you like to do with your changes?" FontWeight="Bold"  Margin="30"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Save to current file" Click="Current_Click" Padding="10,5" Margin="0,0,10,0"/>
+            <Button Content="Save to new file" Click="New_Click" Padding="10,5" Margin="0,0,10,0"/>
+            <Button Content="Cancel" Click="Cancel_Click" Padding="10,5" IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>
