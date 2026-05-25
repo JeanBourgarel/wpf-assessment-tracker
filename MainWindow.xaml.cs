@@ -43,11 +43,6 @@ namespace WPFAssessmentTracker
             }
         }
 
-        private void DisplayAssessmentPerColumn()
-        {
-
-        }
-
         private void DisplayAssessments()
         {
             lvwAssessments.Items.Clear();
@@ -165,15 +160,15 @@ namespace WPFAssessmentTracker
 
             if (File.Exists(fileNameIncremented))
             {
-                string[] split = fileNameIncremented.Split('(', ')');
+                string[] split = fileNameIncremented.Split('_', '_');
                 if (split.Length == 1)
                 {
-                    fileNameIncremented = System.IO.Path.GetFileNameWithoutExtension(textFile) + "(1).txt";
+                    fileNameIncremented = System.IO.Path.GetFileNameWithoutExtension(textFile) + "_1_.txt";
 
                 } else
                 {
                     int newNb = int.Parse(split[1]) + 1;
-                    fileNameIncremented= split[0] + "(" + newNb + ").txt";
+                    fileNameIncremented= split[0] + "_" + newNb + "_.txt";
                 }
             }
             return fileNameIncremented;
@@ -195,36 +190,31 @@ namespace WPFAssessmentTracker
                         }
                         break;
                     case SaveFileDialog.SaveResult.NewFile:
-                        textFile = getNextAvailableFileName();
-                        if (WriteToFile() == true)
+                        var saveDialog = new Microsoft.Win32.SaveFileDialog();
+                        saveDialog.FileName = textFile; // Default file name
+                        saveDialog.DefaultExt = ".txt"; // Default file extension
+                        saveDialog.Filter = "Text documents (.txt)|*.txt";
+
+                        bool? result = saveDialog.ShowDialog();
+
+
+                        if (result == true)
                         {
-                            MessageBox.Show("Changes saved successfully to " + textFile + ".", "Success",
-                                MessageBoxButton.OK, MessageBoxImage.Information);
+                            textFile = System.IO.Path.GetFileName(saveDialog.FileName);
+                            if (WriteToFile() == true)
+                            {
+                                MessageBox.Show("Changes saved successfully to " + textFile + ".", "Success",
+                                    MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
                         }
                         break;
                 }
             }
             DisplayAssessments();
 
-            // To use for AT2.4
-
-            //var dialog = new Microsoft.Win32.SaveFileDialog();
-            //dialog.FileName = textFile; // Default file name
-            //dialog.DefaultExt = ".txt"; // Default file extension
-            //dialog.Filter = "Text documents (.txt)|*.txt";
-
-            //bool? result = dialog.ShowDialog();
 
 
-            //if (result == true)
-            //{
-            //    textFile = System.IO.Path.GetFileName(dialog.FileName);
-            //    if (WriteToFile() == true)
-            //    {
-            //        MessageBox.Show("Changes saved successfully to " + textFile + ".", "Success",
-            //            MessageBoxButton.OK, MessageBoxImage.Information);
-            //    }
-            //}
+           
         }
 
         private void BtnSaveAs_Click(object sender, RoutedEventArgs e)
